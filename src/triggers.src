@@ -3,6 +3,6 @@
 # ------------
 
 on login:
-		add 1 to {esx.logincount}
+        set {esx.logincount} to {esx.logincount} + 1
 
 # ------------
