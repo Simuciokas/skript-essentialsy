@@ -4,5 +4,9 @@
 
 on login:
         set {esx.logincount} to {esx.logincount} + 1
+        send(player, "Welcome to another glorious day on The Fractioned Empire!")
 
+on command:
+        if {esx.blockcommands.%player%} is true:
+                cancel event
 # ------------

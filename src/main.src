@@ -2,15 +2,17 @@
 
 # ------------
 
-command /esx [<text=null>] [<text=null>]:
+command /esx [<text=null>] [<text=null>] [<text=null>]:
         permission: esx
         executable by: players
         trigger:
-                set {_arg1} to argument 1
-                set {_arg2} to argument 2 # Make local variables and set them to their respective arguments
+                set {_arg1} to argument 1 # Make local variables and set them to their respective arguments
+                set {_arg2} to argument 2
+                set {_arg3} to argument 3
                 
                 if {_arg1} is "null":
                         send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
+                        stop trigger
                 
                 if {_arg1} is "help":
                         player has permission "esx.help"
@@ -18,15 +20,49 @@ command /esx [<text=null>] [<text=null>]:
                         send(player, "")
                         send(player, "help ## Shows you this")
                         send(player, "logincount ## Shows you the number of total logins")
+                        send(player, "blockcommands ## Block all commands for a specific player until toggled again")
+                        stop trigger
                 
                 if {_arg1} is "logincount":
                         if {_arg2} is "null":
                                 player has permission "esx.logincount"
                                 send(player, "Logincount: %{esx.logincount}%")
-                        
-                        if {_arg2} is "reset":
-                                player has permission "esx.logincount.reset"
-                                set {esx.logincount} to "0"
-                                send(player, "Successfully set logincount to 0")
+                                stop trigger
+                        if {_arg2} is "help":
+                                send(player, "Command List:")
+                                send(player, "")
+                                send(player, "help ## Shows you this")
+                                send(player, "set [Number] ## Set the logincount to your number of choice")
+                                stop trigger
+                        if {_arg2} is "set":
+                                player has permission "esx.logincount.set"
+                                if {_arg2} is "null":
+                                        send(player, "Usage: /esx logincount set [Number]")
+                                        stop trigger
+                                set {esx.logincount} to {_arg3}
+                                send(player, "Successfully set logincount to %{_arg3}%")
+                                stop trigger
 
+                if {_arg1} is "blockcommands":
+                        if {_arg2} is "null":
+                                send(player, "Usage: /esx blockcommands [Player]")
+                                stop trigger
+                        if {esx.blockcommands.%{_arg2}%} is not set:
+                                player has permission "esx.blockcommands"
+                                set {esx.blockcommands.%{_arg2}%} to true
+                                send(player, "Blocked all commands for player %{_arg2}%")
+                                send(%{_arg2}%, "You have been blocked from running any commands")
+                                stop trigger
+                        if {esx.blockcommands.%{_arg2}%} is false:
+                                player has permission "esx.blockcommands"
+                                set {esx.blockcommands.%{_arg2}%} to true
+                                send(player, "Blocked all commands for player %{_arg2}%")
+                                send(%{_arg2}%, "You have been blocked from running any commands")
+                                stop trigger
+                        if {esx.blockcommands.%{_arg2}%} is true:
+                                player has permission "esx.blockcommands"
+                                set {esx.blockcommands.%{_arg2}%} to false
+                                send(player, "Unblocked all commands for player %{_arg2}%")
+                                send(%{_arg2}%, "You may now execute commands again")
+                                stop trigger
 # ------------
