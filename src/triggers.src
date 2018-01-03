@@ -1,0 +1,8 @@
+# Triggers
+
+# ------------
+
+on login:
+		add 1 to {esx.logincount}
+
+# ------------

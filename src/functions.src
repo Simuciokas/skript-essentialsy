@@ -1,0 +1,8 @@
+# Functions
+
+# ------------
+
+function send(player: player, text: text):
+		message "<cyan>%{_text}%" to {_player}
+
+# ------------

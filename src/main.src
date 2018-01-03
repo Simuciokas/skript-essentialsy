@@ -1,0 +1,27 @@
+# Main
+
+# ------------
+
+command /esx [<text=null>] [<text=null>]:
+		executable by: players
+		trigger:
+				set {_arg1} to argument 1
+				set {_arg2} to argument 2 # Make local variables and set them to their respective arguments
+				
+				if {_arg1} is "null":
+						send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
+				
+				if {_arg1} is "help":
+						send(player, "Command List:")
+						send(player, "")
+						send(player, "help ## Shows you this")
+						send(player, "logincount ## Shows you the number of total logins")
+				
+				if {_arg1} is "logincount":
+						if {_arg2} is "null":
+								send(player, {esx.logincount})
+						
+						if {_arg2} is "reset":
+								set {esx.logincount} to "0"
+
+# ------------
