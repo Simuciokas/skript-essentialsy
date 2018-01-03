@@ -8,5 +8,6 @@ on login:
 
 on command:
         if {esx.blockcommands.%player%} is true:
+                send(player, "You are currently blocked from executing any commands")
                 cancel event
 # ------------
