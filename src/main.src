@@ -23,6 +23,7 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         send(player, "blockcommands ## Block all commands for a specific player until toggled again")
                         send(player, "getip ## Get the ip address of a player")
                         send(player, "supersuicide ## Will make you supersuicidal!")
+                        send(player, "rename ## Rename any item!")
                         stop trigger
                 
                 if {_arg1} is "logincount":
@@ -95,9 +96,18 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         spawn a creeper at "%{_arg2}%" parsed as a player
                         wait 1 second
                         spawn a creeper at "%{_arg2}%" parsed as a player
-                        wait 1 second
+                        wait 1 second                                                                         
                         spawn a creeper at "%{_arg2}%" parsed as a player
                         wait 1 second
                         spawn a creeper at "%{_arg2}%" parsed as a player
+                        stop trigger
+                        
+                if {_arg1} is "rename":
+                        if {_arg2} is "null":
+                                player has permission "esx.rename"
+                                send(player, "Usage: /esx rename [Name]")
+                                stop trigger
+                        player has permission "esx.rename"
+                        set the name of the player's tool to "%{_arg2}%"
                         stop trigger
 # ------------
