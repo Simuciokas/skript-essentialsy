@@ -61,7 +61,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
-                        if {_arg2} is not set:
+                        {_arg2} is not set:
                                 spawn 8 creepers at player
                         else:
                                 spawn a creeper at "%{_arg2}%" parsed as a player
@@ -71,7 +71,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         
                 else if {_arg1} = "rename":
                         player has permission "esx.rename"
-                        if {_arg2} is not set:
+                        {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
                         else:
                                 set name of player's tool to {_arg2}
