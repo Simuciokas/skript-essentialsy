@@ -3,5 +3,5 @@
 # ------------
 
 function send(player: player, text: text):
-        message "<cyan>%{_text}%" to {_player}
+        message "<cyan>[EssentialsY] %{_text}%" to {_player}
 # ------------
