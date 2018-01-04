@@ -83,6 +83,7 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                                 player has permission "esx.supersuicide"
                                 spawn 8 creepers at the player
                                 stop trigger
+                        player has permission "esx.supersuicide"
                         spawn a creeper at "%{_arg2}%" parsed as a player
                         wait 1 second
                         spawn a creeper at "%{_arg2}%" parsed as a player
