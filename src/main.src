@@ -27,8 +27,8 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         stop trigger
                 
                 if {_arg1} is "logincount":
+                        player has permission "esx.logincount"
                         if {_arg2} is "null":
-                                player has permission "esx.logincount"
                                 send(player, "Logincount: %{esx.logincount}%")
                                 stop trigger
                         if {_arg2} is "help":
@@ -47,44 +47,39 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                                 stop trigger
 
                 if {_arg1} is "blockcommands":
+                        player has permission "esx.blockcommands"
                         if {_arg2} is "null":
-                                player has permission "esx.blockcommands"
                                 send(player, "Usage: /esx blockcommands [Player]")
                                 stop trigger
                         if {esx.blockcommands.%{_arg2}%} is not set:
-                                player has permission "esx.blockcommands"
                                 set {esx.blockcommands.%{_arg2}%} to true
                                 send(player, "Blocked all commands for player %{_arg2}%")
                                 send({_arg2}, "You have been blocked from running any commands")
                                 stop trigger
                         if {esx.blockcommands.%{_arg2}%} is false:
-                                player has permission "esx.blockcommands"
                                 set {esx.blockcommands.%{_arg2}%} to true
                                 send(player, "Blocked all commands for player %{_arg2}%")
                                 send({_arg2}, "You have been blocked from running any commands")
                                 stop trigger
                         if {esx.blockcommands.%{_arg2}%} is true:
-                                player has permission "esx.blockcommands"
                                 set {esx.blockcommands.%{_arg2}%} to false
                                 send(player, "Unblocked all commands for player %{_arg2}%")
                                 send({_arg2}, "You may now execute commands again")
                                 stop trigger
 
                 if {_arg1} is "getip":
+                        player has permission "esx.getip"
                         if {_arg2} is "null":
-                                player has permission "esx.getip"
                                 send(player, "Usage: /esx getip [Player]")
                                 stop trigger
-                        player has permission "esx.getip"
                         set {_ip} to ip of "%{_arg2}%" parsed as a player
                         send(player, "%{_ip}%")
                         
                 if {_arg1} is "supersuicide":
+                        player has permission "esx.supersuicide"
                         if {_arg2} is "null":
-                                player has permission "esx.supersuicide"
                                 spawn 8 creepers at the player
                                 stop trigger
-                        player has permission "esx.supersuicide"
                         spawn a creeper at "%{_arg2}%" parsed as a player
                         wait 1 second
                         spawn a creeper at "%{_arg2}%" parsed as a player
@@ -103,11 +98,10 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         stop trigger
                         
                 if {_arg1} is "rename":
+                        player has permission "esx.rename"
                         if {_arg2} is "null":
-                                player has permission "esx.rename"
                                 send(player, "Usage: /esx rename [Name]")
                                 stop trigger
-                        player has permission "esx.rename"
                         set the name of the player's tool to "%{_arg2}%"
                         stop trigger
 # ------------
