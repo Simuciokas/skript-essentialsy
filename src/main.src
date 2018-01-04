@@ -22,6 +22,7 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         send(player, "logincount ## Shows you the number of total logins")
                         send(player, "blockcommands ## Block all commands for a specific player until toggled again")
                         send(player, "getip ## Get the ip address of a player")
+                        send(player, "supersuicide ## Will make you supersuicidal!")
                         stop trigger
                 
                 if {_arg1} is "logincount":
@@ -76,4 +77,9 @@ command /esx [<text=null>] [<text=null>] [<text=null>]:
                         player has permission "esx.getip"
                         set {_ip} to ip of "%{_arg2}%" parsed as a player
                         send(player, "%{_ip}%")
+                        
+                if {_arg1} is "supersuicide":
+                        player has permission "esx.supersuicide"
+                        spawn 8 creepers at the player
+                        stop trigger
 # ------------
