@@ -6,14 +6,12 @@ command /spawn:
         description: Teleports you to spawn
         executable by: players
         trigger:
-                teleport player to {esx.spawn}
-                stop trigger
+                teleport player to {esx::spawn}
 				
 command /setspawn:
         permission: esx.setspawn
-        description: Sets spawn to your current location
+        description: Sets spawn at your current location
         trigger:
-                set {esx.spawn} to location of player
+                set {esx::spawn} to location of player
                 send(player, "Spawn set successfully!")
-                stop trigger
 # ------------
