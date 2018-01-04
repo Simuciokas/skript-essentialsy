@@ -3,13 +3,11 @@
 # ------------
 
 on login:
-        set {esx.logincount} to {esx.logincount} + 1
+        add 1 to {esx::logincount}
         send(player, "Welcome to another glorious day on The Fractioned Empire!")
-        stop trigger
 
 on command:
-        if {esx.blockcommands.%player%} is true:
-                send(player, "You are currently blocked from executing any commands")
-                cancel event
-                stop trigger
+        {esx::blockcommands::%player%} is set
+        send(player, "You are currently blocked from executing any commands")
+        cancel event
 # ------------
