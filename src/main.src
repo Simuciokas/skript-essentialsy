@@ -47,7 +47,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 set {esx::blockcommands::%{_arg2}%} to true
                                 send(player, "Blocked all commands for player %{_arg2}%")
                                 send({_arg2}, "You have been blocked from running any commands")
-                        else if {esx::blockcommands::%{_arg2}%} is true:
+                        else:
                                 clear {esx::blockcommands::%{_arg2}%}
                                 send(player, "Unblocked all commands for player %{_arg2}%")
                                 send({_arg2}, "You may now execute commands again")
