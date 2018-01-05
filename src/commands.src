@@ -14,4 +14,9 @@ command /setspawn:
         trigger:
                 set {esx::spawn} to location of player
                 send(player, "Spawn set successfully!")
+              
+command /unblockcommands [<arg1:text>]:
+        permission: esx.blockcommands
+        trigger:
+                clear {esx::blockcommands::%{_arg1}%}
 # ------------
