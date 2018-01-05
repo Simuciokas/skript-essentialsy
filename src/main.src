@@ -2,7 +2,7 @@
 
 
 # ------------
-command /esx [<arg1:text>] [<arg2:text>]  [<arg3:text>] [<arg4:text>] [<arg5:text>] [<arg6:text>] [<arg7:text>] [<arg8:text>] [<arg9:text>]:
+command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
         permission: esx
         executable by: players
         trigger:
@@ -76,6 +76,6 @@ command /esx [<arg1:text>] [<arg2:text>]  [<arg3:text>] [<arg4:text>] [<arg5:tex
                                 send(player, "Usage: /esx setmotd [Text]")
                         else:
                                 player has permission "esx.setmotd"
-                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}% %{_arg8}% %{_arg9}%"
+                                set {esx::motd} to "%{_arg2}% %{_arg3}%"
                                 send(player, "Successfully set motd to: %{esx::motd}%")
 # ------------

@@ -3,7 +3,7 @@
 # ------------
 on login:
         add 1 to {esx::logincount}
-        wait 1 tick
+        wait 3 ticks
         sendempty(player, {esx::motd})
 
 on command:
