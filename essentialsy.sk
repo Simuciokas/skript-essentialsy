@@ -1,3 +1,61 @@
+# Skript-EssentialsY
+
+
+# Functions
+
+# ------------
+function send(player: player, text: text):
+        message "<cyan>[EssentialsY] %{_text}%" to {_player} parsed as player
+        
+function sendempty(player: player, text: text):
+        message "<cyan>%{_text}%" to {_player} parsed as player
+        
+function supersuicide(p: player):
+        spawn 8 creepers at {_p}
+        loop 7 times:
+                wait 1 second
+                spawn 8 creepers at {_p}
+# ------------
+
+
+# Triggers
+
+# ------------
+on login:
+        add 1 to {esx::logincount}
+        send(player, "Welcome to another glorious day on The Fractioned Empire!")
+
+on command:
+        {esx::blockcommands::%player%} is set
+        send(player, "You are currently blocked from executing any commands")
+        cancel event
+# ------------
+
+
+# Standalone Commands
+
+# ------------
+command /spawn:
+        permission: esx.spawn
+        description: Teleports you to spawn
+        executable by: players
+        trigger:
+                teleport player to {esx::spawn}
+				
+command /setspawn:
+        permission: esx.setspawn
+        description: Sets spawn at your current location
+        trigger:
+                set {esx::spawn} to location of player
+                send(player, "Spawn set successfully!")
+              
+command /unblockcommands [<arg1:text>]:
+        permission: esx.blockcommands
+        trigger:
+                clear {esx::blockcommands::%{_arg1}%}
+# ------------
+
+
 # Main
 
 
