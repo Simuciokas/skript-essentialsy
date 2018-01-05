@@ -1,9 +1,7 @@
 # Main
 
-#add message for when a player doesn't have permission
 
 # ------------
-
 command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
         permission: esx
         executable by: players
