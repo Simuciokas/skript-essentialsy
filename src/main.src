@@ -55,7 +55,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
-                                send(player, "%ip of ""%{_arg2}%"" parsed as a player%") # %%{_}%% might be needed
+                                send(player, "%ip of {_arg2} parsed as a player%") # %%{_}%% might be needed
                         
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
