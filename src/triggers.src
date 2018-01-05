@@ -2,8 +2,10 @@
 
 # ------------
 on login:
-        add 1 to {esx::logincount}
-        send(player, "Welcome to another glorious day on The Fractioned Empire!")
+        set {esx::logincount} to {esx::logincount} + 1
+        wait 3 ticks
+        if {esx::motd} is set:
+                sendempty(player, {esx::motd})
 
 on command:
         {esx::blockcommands::%player%} is set
