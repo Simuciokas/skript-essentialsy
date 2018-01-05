@@ -34,7 +34,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 {_arg3} is not set:
                                         send(player, "Usage: /esx logincount set [Number]")
                                 else:
-                                        set {esx::logincount} to {_arg3}
+                                        set {esx::logincount} to "%{_arg3}%" parsed as integer
                                         send(player, "Successfully set logincount to %{_arg3}%")
 
                 else if {_arg1} = "blockcommands":
@@ -61,11 +61,13 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
                         {_arg2} is not set:
-                                loop 8 times:
-                                        spawn 8 creepers at the player
+                                spawn 8 creepers at the player
+                                loop 7 times:
                                         wait 1 second
+                                        spawn 8 creepers at the player
                         else:
-                                loop 8 times:
+                                spawn 8 creepers at "%{_arg2}%" parsed as a player
+                                loop 7 times:
                                         wait 1 second
                                         spawn 8 creepers at "%{_arg2}%" parsed as a player
                         
