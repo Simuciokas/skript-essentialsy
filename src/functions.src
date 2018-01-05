@@ -2,8 +2,8 @@
 
 # ------------
 function send(player: player, text: text):
-        message "<cyan>[EssentialsY] %{_text}%" to {_player}
+        message "<cyan>[EssentialsY] %{_text}%" to {_player} parsed as a player
         
 function sendempty(player: player, text: text):
-        message "<cyan>%{_text}%" to {_player}
+        message "<cyan>%{_text}%" to {_player} parsed as a player
 # ------------
