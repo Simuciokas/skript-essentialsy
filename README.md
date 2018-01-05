@@ -11,6 +11,11 @@ Clone the repository
 git clone https://github.com/2legal2/skript-essentialsy.git
 ```
 
+Enter the repo directory
+```
+cd skript-essentialsy
+```
+
 Run builder.sh via a linux terminal or git terminal
 ```
 ./builder.sh
