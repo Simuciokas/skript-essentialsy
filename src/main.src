@@ -12,7 +12,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 {_arg1} = "help":
                         player has permission "esx.help"
                         send(player, "Command List:")
-                        send(player, "")
+                        sendempty(player, "")
                         send(player, "help ## Shows you this")
                         send(player, "logincount ## Shows you the number of total logins")
                         send(player, "blockcommands ## Block all commands for a specific player until toggled again")
@@ -55,21 +55,19 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
-                                send(player, "%ip of {_arg2} parsed as a player%") # %%{_}%% might be needed
+                                send(player, "%ip of {_arg2} parsed as a player%")
                         
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
-                        if {_arg2} is "null":
-                                spawn 8 creepers at the player
-                                stop trigger
                         loop 8 times:
                                 spawn a creeper at "%{_arg2}%" parsed as a player
                                 wait 1 second
                         {_arg2} is not set:
-                                spawn 8 creepers at player
+                                loop 8 times:
+                                        spawn a creeper at the player
+                                        wait 1 second
                         else:
-                                spawn a creeper at "%{_arg2}%" parsed as a player
-                                loop 7 times:
+                                loop 8 times:
                                         wait 1 second
                                         spawn a creeper at "%{_arg2}%" parsed as a player
                         
