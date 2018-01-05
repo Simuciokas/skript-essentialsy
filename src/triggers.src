@@ -3,7 +3,8 @@
 # ------------
 on login:
         add 1 to {esx::logincount}
-        send(player, {esx::motd})
+        wait 1 tick
+        sendempty(player, {esx::motd})
 
 on command:
         {esx::blockcommands::%player%} is set
