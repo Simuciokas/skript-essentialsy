@@ -1,7 +1,6 @@
 # Triggers
 
 # ------------
-
 on login:
         add 1 to {esx::logincount}
         send(player, "Welcome to another glorious day on The Fractioned Empire!")
