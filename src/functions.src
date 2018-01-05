@@ -6,4 +6,10 @@ function send(player: player, text: text):
         
 function sendempty(player: player, text: text):
         message "<cyan>%{_text}%" to {_player} parsed as player
+        
+function supersuicide(p: player):
+        spawn 1 creeper at {_p}
+                loop 7 times:
+                        wait 1 second
+                        spawn 1 creeper at {_p}
 # ------------
