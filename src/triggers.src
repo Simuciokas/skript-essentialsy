@@ -2,7 +2,7 @@
 
 # ------------
 on login:
-        add 1 to {esx::logincount}
+        set {esx::logincount} to {esx::logincount} + 1
         wait 3 ticks
         if {esx::motd} is set:
                 sendempty(player, {esx::motd})
