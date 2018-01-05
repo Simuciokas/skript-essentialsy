@@ -44,19 +44,18 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         else if {esx::blockcommands::%{_arg2}%} is not set:
                                 set {esx::blockcommands::%{_arg2}%} to true
                                 send(player, "Blocked all commands for player %{_arg2}%")
-                                send({_arg2}, "You have been blocked from running any commands")
+                                send({_arg2} parsed as player, "You have been blocked from running any commands")
                         else:
                                 clear {esx::blockcommands::%{_arg2}%}
                                 send(player, "Unblocked all commands for player %{_arg2}%")
-                                send({_arg2}, "You may now execute commands again")
+                                send({_arg2} parsed as player, "You may now execute commands again")
 
                 else if {_arg1} = "getip":
                         player has permission "esx.getip"
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
-                                set {_ip} to ip of "%{_arg2}%" parsed as a player
-                                send(player, "%{_ip}%")
+                                send(player, "%ip of ({_arg2} parsed as player)%")
                         
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
