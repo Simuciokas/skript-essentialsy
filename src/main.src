@@ -55,21 +55,19 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
-                                send(player, "%ip of {_arg2} parsed as a player%")
+                                set {_ip} to ip of "%{_arg2}%" parsed as a player
+                                send(player, "%{_ip}%")
                         
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
-                        loop 8 times:
-                                spawn a creeper at "%{_arg2}%" parsed as a player
-                                wait 1 second
                         {_arg2} is not set:
                                 loop 8 times:
-                                        spawn a creeper at the player
+                                        spawn 8 creepers at the player
                                         wait 1 second
                         else:
                                 loop 8 times:
                                         wait 1 second
-                                        spawn a creeper at "%{_arg2}%" parsed as a player
+                                        spawn 8 creepers at "%{_arg2}%" parsed as a player
                         
                 else if {_arg1} = "rename":
                         player has permission "esx.rename"
