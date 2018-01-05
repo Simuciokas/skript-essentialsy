@@ -3,7 +3,7 @@
 # ------------
 on login:
         add 1 to {esx::logincount}
-        send(player, "Welcome to another glorious day on The Fractioned Empire!")
+        send(player, {esx::motd})
 
 on command:
         {esx::blockcommands::%player%} is set
