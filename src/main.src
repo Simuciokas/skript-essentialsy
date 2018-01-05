@@ -9,7 +9,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 {_arg1} is not set:
                         send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
                         stop
-                {_arg1} = "help":
+                else if {_arg1} = "help":
                         player has permission "esx.help"
                         send(player, "Command List:")
                         sendempty(player, "")
