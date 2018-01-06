@@ -2,9 +2,9 @@
 
 # ------------
 on login:
-        set {esx::logincount} to {esx::logincount} + 1
+        add 1 to {esx::logincount} #if it doesn't exist, it creates {esx::logincount} to be 0, then adds 1 to it
         wait 3 ticks
-        if {esx::motd} is set:
+        {esx::motd} is set:
                 sendempty(player, {esx::motd})
 
 on command:
