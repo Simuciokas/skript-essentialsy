@@ -60,9 +60,9 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 else if {_arg1} = "supersuicide":
                         player has permission "esx.supersuicide"
                         {_arg2} is not set:
-                                supersuicide("%player%" parsed as player)
+                                supersuicide(player)
                         else:
-                                supersuicide("%{_arg2}%" parsed as player)
+                                supersuicide({_arg2} parsed as player)
                         
                 else if {_arg1} = "rename":
                         player has permission "esx.rename"
