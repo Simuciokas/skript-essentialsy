@@ -20,6 +20,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 send(player, "supersuicide ## Will make you supersuicidal!")
                                 send(player, "rename ## Rename any item!")
                                 send(player, "setmotd ## Set the login message!")
+                                send(player, "ping -- See your current ping")
                         else:
                                 send(player, {@npm})
                 
