@@ -10,78 +10,94 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
                         stop
                 else if {_arg1} = "help":
-                        player has permission "esx.help"
-                        send(player, "Command List:")
-                        sendempty(player, "")
-                        send(player, "help ## Shows you this")
-                        send(player, "logincount ## Shows you the number of total logins")
-                        send(player, "blockcommands ## Block all commands for a specific player until toggled again")
-                        send(player, "getip ## Get the ip address of a player")
-                        send(player, "supersuicide ## Will make you supersuicidal!")
-                        send(player, "rename ## Rename any item!")
-                        send(player, "setmotd ## Set the login message!")
+                        if player has permission "esx.help":
+                                send(player, "Command List:")
+                                sendempty(player, "")
+                                send(player, "help ## Shows you this")
+                                send(player, "logincount ## Shows you the number of total logins")
+                                send(player, "blockcommands ## Block all commands for a specific player until toggled again")
+                                send(player, "getip ## Get the ip address of a player")
+                                send(player, "supersuicide ## Will make you supersuicidal!")
+                                send(player, "rename ## Rename any item!")
+                                send(player, "setmotd ## Set the login message!")
+                        else:
+                                send(player, {@npm})
                 
                 else if {_arg1} = "logincount":
-                        player has permission "esx.logincount"
-                        {_arg2} is not set:
-                                send(player, "Logincount: %{esx::logincount}%")
-                        else if {_arg2} = "help":
-                                send(player, "Command List:")
-                                send(player, "")
-                                send(player, "help ## Shows you this")
-                                send(player, "set [Number] ## Set the logincount to your number of choice")
-                        else if {_arg2} = "set":
-                                player has permission "esx.logincount.set"
-                                {_arg3} is not set:
-                                        send(player, "Usage: /esx logincount set [Number]")
-                                else:
-                                        set {esx::logincount} to {_arg3} parsed as integer
-                                        send(player, "Successfully set logincount to %{_arg3}%")
+                        if player has permission "esx.logincount":
+                                {_arg2} is not set:
+                                        send(player, "Logincount: %{esx::logincount}%")
+                                else if {_arg2} = "help":
+                                        send(player, "Command List:")
+                                        send(player, "")
+                                        send(player, "help ## Shows you this")
+                                        send(player, "set [Number] ## Set the logincount to your number of choice")
+                                else if {_arg2} = "set":
+                                        player has permission "esx.logincount.set"
+                                        {_arg3} is not set:
+                                                send(player, "Usage: /esx logincount set [Number]")
+                                        else:
+                                                set {esx::logincount} to {_arg3} parsed as integer
+                                                send(player, "Successfully set logincount to %{_arg3}%")
+                        else:
+                                send(player, {@npm})
 
                 else if {_arg1} = "blockcommands":
-                        player has permission "esx.blockcommands"
-                        {_arg2} is not set:
-                                send(player, "Usage: /esx blockcommands [Player]")
-                        else if {esx::blockcommands::%{_arg2}%} is not set:
-                                set {esx::blockcommands::%{_arg2}%} to true
-                                send(player, "Blocked all commands for player %{_arg2}%")
-                                send({_arg2} parsed as player, "You have been blocked from running any commands")
+                        if player has permission "esx.blockcommands":
+                                {_arg2} is not set:
+                                        send(player, "Usage: /esx blockcommands [Player]")
+                                else if {esx::blockcommands::%{_arg2}%} is not set:
+                                        set {esx::blockcommands::%{_arg2}%} to true
+                                        send(player, "Blocked all commands for player %{_arg2}%")
+                                        send({_arg2} parsed as player, "You have been blocked from running any commands")
+                                else:
+                                        clear {esx::blockcommands::%{_arg2}%}
+                                        send(player, "Unblocked all commands for player %{_arg2}%")
+                                        send({_arg2} parsed as player, "You may now execute commands again")
                         else:
-                                clear {esx::blockcommands::%{_arg2}%}
-                                send(player, "Unblocked all commands for player %{_arg2}%")
-                                send({_arg2} parsed as player, "You may now execute commands again")
+                                send(player, {@npm})
 
                 else if {_arg1} = "getip":
-                        player has permission "esx.getip"
-                        {_arg2} is not set:
-                                send(player, "Usage: /esx getip [Player]")
+                        if player has permission "esx.getip":
+                                {_arg2} is not set:
+                                        send(player, "Usage: /esx getip [Player]")
+                                else:
+                                        send(player, "%ip of ({_arg2} parsed as player)%")
                         else:
-                                send(player, "%ip of ({_arg2} parsed as player)%")
+                                send(player, {@npm})
                         
                 else if {_arg1} = "supersuicide":
-                        player has permission "esx.supersuicide"
-                        {_arg2} is not set:
-                                supersuicide(player)
+                        if player has permission "esx.supersuicide":
+                                {_arg2} is not set:
+                                        supersuicide(player)
+                                else:
+                                        supersuicide({_arg2} parsed as player)
                         else:
-                                supersuicide({_arg2} parsed as player)
+                                send(player, {@npm})
                         
                 else if {_arg1} = "rename":
-                        player has permission "esx.rename"
-                        {_arg2} is not set:
-                                send(player, "Usage: /esx rename [Name]")
+                        if player has permission "esx.rename":
+                                {_arg2} is not set:
+                                        send(player, "Usage: /esx rename [Name]")
+                                else:
+                                        set name of player's tool to "%{_arg2}% %{_arg3}%"        
                         else:
-                                set name of player's tool to "%{_arg2}% %{_arg3}%"        
+                                send(player, {@npm})
                 
                 else if {_arg1} = "setmotd":
-                        {_arg2} is not set:
-                                send(player, "Usage: /esx setmotd [Text]")
+                        if player has permission "esx.setmotd":
+                                {_arg2} is not set:
+                                        send(player, "Usage: /esx setmotd [Text]")
+                                else:
+                                        set {esx::motd} to "%{_arg2}% %{_arg3}%"
+                                        send(player, "Successfully set motd to: %{esx::motd}%")
                         else:
-                                player has permission "esx.setmotd"
-                                set {esx::motd} to "%{_arg2}% %{_arg3}%"
-                                send(player, "Successfully set motd to: %{esx::motd}%")
+                                send(player, {@npm})
                                 
                 else if {_arg1} = "ping":
-                        player has permission "esx.ping"
-                        set {_ping} to player's ping
-                        send(player, "Your ping is: %{_ping}%")
+                        if player has permission "esx.ping":
+                                set {_ping} to player's ping
+                                send(player, "Your ping is: %{_ping}%")
+                        else:
+                                send(player, {@npm})
 # ------------
