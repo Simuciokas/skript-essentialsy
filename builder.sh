@@ -1,6 +1,10 @@
 echo '# Skript-EssentialsY' > essentialsy.sk
 echo '' >> essentialsy.sk
 echo '' >> essentialsy.sk
+echo "Adding options"
+cat src/options.src >> essentialsy.sk
+echo '' >> essentialsy.sk
+echo '' >> essentialsy.sk
 echo "Adding functions"
 cat src/functions.src >> essentialsy.sk
 echo '' >> essentialsy.sk

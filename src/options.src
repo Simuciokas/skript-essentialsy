@@ -1,0 +1,6 @@
+# Options
+
+# ------------
+options:
+        npm = "<red>You do not have permission to execute this command" # Np permission message
+# ------------
