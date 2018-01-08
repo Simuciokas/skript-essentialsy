@@ -10,9 +10,9 @@ function sendempty(player: player, text: text):
 function supersuicide(p: player):
         spawn 8 creepers at {_p}
         loop 7 times:
+                wait 1 second
                 {esx::playerDied::%{_p}%} is set:
                         clear {esx::playerDied::%{_p}%}
                         stop loop
-                wait 1 second
                 spawn 8 creepers at {_p}
 # ------------
