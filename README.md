@@ -7,11 +7,12 @@ There is currently no wiki but there will be soon. For now i think the plugins h
 ## Dependencies
 
 \# Skript
+
 \# Skellett
 
 ## Installation guide
 
-Clone the repository
+Clone the repository or download a release
 ```
 git clone https://github.com/2legal2/skript-essentialsy.git
 ```
