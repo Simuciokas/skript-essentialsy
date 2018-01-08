@@ -30,8 +30,8 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 else if {_arg2} = "help":
                                         send(player, "Command List:")
                                         send(player, "")
-                                        send(player, "help ## Shows you this")
-                                        send(player, "set [Number] ## Set the logincount to your number of choice")
+                                        send(player, "help -- Shows you this")
+                                        send(player, "set [Number] -- Set the logincount to your number of choice")
                                 else if {_arg2} = "set":
                                         player has permission "esx.logincount.set"
                                         {_arg3} is not set:
