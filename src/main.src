@@ -13,13 +13,13 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         if player has permission "esx.help":
                                 send(player, "Command List:")
                                 sendempty(player, "")
-                                send(player, "help ## Shows you this")
-                                send(player, "logincount ## Shows you the number of total logins")
-                                send(player, "blockcommands ## Block all commands for a specific player until toggled again")
-                                send(player, "getip ## Get the ip address of a player")
-                                send(player, "supersuicide ## Will make you supersuicidal!")
-                                send(player, "rename ## Rename any item!")
-                                send(player, "setmotd ## Set the login message!")
+                                send(player, "help -- Shows you this")
+                                send(player, "logincount -- Shows you the number of total logins")
+                                send(player, "blockcommands -- Block all commands for a specific player until toggled again")
+                                send(player, "getip -- Get the ip address of a player")
+                                send(player, "supersuicide -- Will make you supersuicidal!")
+                                send(player, "rename -- Rename any item!")
+                                send(player, "setmotd -- Set the login message!")
                         else:
                                 send(player, {@npm})
                 
