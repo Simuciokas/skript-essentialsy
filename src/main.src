@@ -79,4 +79,9 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 player has permission "esx.setmotd"
                                 set {esx::motd} to "%{_arg2}% %{_arg3}%"
                                 send(player, "Successfully set motd to: %{esx::motd}%")
+                                
+                else if {_arg1} = "ping":
+                        player has permission "esx.ping"
+                        set {_ping} to player's ping
+                        send(player, "Your ping is: %{_ping}%")
 # ------------
