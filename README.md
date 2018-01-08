@@ -4,6 +4,11 @@ Skript-EssentialsY is a lightweight addon written in skript that adds and replac
 There is currently no wiki but there will be soon. For now i think the plugins help commands provide adequate help.
 
 
+## Dependencies
+
+\# Skript
+\# Skellett
+
 ## Installation guide
 
 Clone the repository
