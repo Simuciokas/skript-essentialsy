@@ -11,4 +11,7 @@ on command:
         {esx::blockcommands::%player%} is set
         send(player, "You are currently blocked from executing any commands")
         cancel event
+        
+on first join:
+        execute console command "sudo %player% spawn"
 # ------------
