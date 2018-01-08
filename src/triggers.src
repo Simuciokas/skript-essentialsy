@@ -13,10 +13,10 @@ on command:
         cancel event
         
 on death of player:
-        set {esx::playerDied} to true
+        set {esx::playerDied::%victim%} to true
         wait 21 ticks
-        {esx::playerDied} is set
-        clear {esx::playerDied}
+        {esx::playerDied::%victim%} is set
+        clear {esx::playerDied::%victim%}
 
 on first join:
         execute console command "sudo %player% spawn"
