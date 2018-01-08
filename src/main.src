@@ -19,6 +19,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         send(player, "getip ## Get the ip address of a player")
                         send(player, "supersuicide ## Will make you supersuicidal!")
                         send(player, "rename ## Rename any item!")
+                        send(player, "setmotd ## Set the login message!")
                 
                 else if {_arg1} = "logincount":
                         player has permission "esx.logincount"
@@ -69,7 +70,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
                         else:
-                                set name of player's tool to {_arg2}        
+                                set name of player's tool to "%{_arg2}% %{_arg3}%"        
                 
                 else if {_arg1} = "setmotd":
                         {_arg2} is not set:

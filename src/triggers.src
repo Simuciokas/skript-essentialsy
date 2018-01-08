@@ -13,5 +13,5 @@ on command:
         cancel event
         
 on first join:
-        make player execute command "/spawn"
+        execute console command "sudo %player% spawn"
 # ------------
