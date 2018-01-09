@@ -1,13 +1,13 @@
 # Functions
 
 # ------------
-function send(player: player, text: text):
+function send(player: player, text: text): # The regular send function. Takes one param as text and one player param and messages the player with a set prefix
         message "{@sendprefix} %{_text}%" to {_player}
 
-function sendempty(player: player, text: text):
+function sendempty(player: player, text: text): # Does the same as above but without the prefix
         message "<cyan>%{_text}%" to {_player}
 
-function supersuicide(p: player):
+function supersuicide(p: player): # Spawn 64 creepers at the player over 8 seconds, mostly just to annoy
         spawn 8 creepers at {_p}
         loop 7 times:
                 wait 1 second
