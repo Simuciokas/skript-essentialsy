@@ -3,5 +3,5 @@
 # ------------
 options:
         npm : "<red>You do not have permission to execute this command" # Np permission message
-        sendprefix : "<gray>[<cyan>EssentialsY<gray>]<cyan>"
+        sendprefix : "<gray>[<cyan>EssentialsY<gray>]<cyan>" # The prefix in front of any chat message sent by the skript
 # ------------

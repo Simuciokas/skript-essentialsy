@@ -3,16 +3,16 @@
 # ------------
 on login:
         set {esx::logincount} to {esx::logincount} + 1
-        wait 3 ticks
         set {esx::ip::%player%} to ip of player
         if {esx::motd} is set:
+                wait 3 ticks
                 sendempty(player, {esx::motd})
 
 on command:
-        {esx::blockcommands::%player%} is set
-        send(player, "You are currently blocked from executing any commands")
-        cancel event
-        
+        {esx::blockcommands::%player%} is set:
+                send(player, "You are currently blocked from executing any commands")
+                cancel event
+
 on death of player:
         set {esx::playerDied::%victim%} to true
         wait 25 ticks
