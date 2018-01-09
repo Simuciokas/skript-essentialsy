@@ -1,18 +1,59 @@
-# Main
-
-
-# ------------
+options:
+        npm : "<red>You do not have permission to execute this command" 
+function send(player: player, text: text):
+        message "<cyan>[EssentialsY] %{_text}%" to {_player}
+function sendempty(player: player, text: text):
+        message "<cyan>%{_text}%" to {_player}
+function supersuicide(p: player):
+        spawn 8 creepers at {_p}
+        loop 7 times:
+                wait 1 second
+                {esx::playerDied::%{_p}%} is set:
+                        clear {esx::playerDied::%{_p}%}
+                        stop loop
+                spawn 8 creepers at {_p}
+on login:
+        set {esx::logincount} to {esx::logincount} + 1
+        wait 3 ticks
+        set {esx::ip::player} to ip of player
+        if {esx::motd} is set:
+                sendempty(player, {esx::motd})
+on command:
+        {esx::blockcommands::%player%} is set
+        send(player, "You are currently blocked from executing any commands")
+        cancel event
+on death of player:
+        set {esx::playerDied::%victim%} to true
+        wait 25 ticks
+        {esx::playerDied::%victim%} is set
+        clear {esx::playerDied::%victim%}
+on first join:
+        execute console command "sudo %player% spawn"
+command /spawn:
+        permission: esx.spawn
+        description: Teleports you to spawn
+        executable by: players
+        trigger:
+                teleport player to {esx::spawn}
+command /setspawn:
+        permission: esx.setspawn
+        description: Sets spawn at your current location
+        trigger:
+                set {esx::spawn} to location of player
+                send(player, "Spawn set successfully!")
+command /unblockcommands [<arg1:text>]:
+        permission: esx.blockcommands
+        trigger:
+                clear {esx::blockcommands::%{_arg1}%}
 command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
         permission: esx
         executable by: players
         trigger:
                 {_arg1} is not set:
-                        send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
+                        send(player, "Type /esx help to view a list of commands") 
                         stop
-                        
                 else if player doesn't have permission "esx.%{_arg1}%":
                         send(player, {@npm})
-                        
                 else if {_arg1} = "help":
                         send(player, "Command List:")
                         sendempty(player, "")
@@ -24,14 +65,13 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         send(player, "rename -- Rename any item!")
                         send(player, "setmotd -- Set the login message!")
                         send(player, "ping -- See your current ping")
-                
                 else if {_arg1} = "logincount":
                         {_arg2} is not set:
                                 send(player, "Logincount: %{esx::logincount}%")
                         else if {_arg2} = "help":
                                 send(player, "Command List:")
                                 send(player, "")
-                                send(player, "help -- Shows you this")
+                                 send(player, "help -- Shows you this")
                                 send(player, "set [Number] -- Set the logincount to your number of choice")
                         else if {_arg2} = "set":
                                 {_arg3} is not set:
@@ -39,7 +79,6 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 else:
                                         set {esx::logincount} to {_arg3} parsed as integer
                                         send(player, "Successfully set logincount to %{_arg3}%")
-
                 else if {_arg1} = "blockcommands":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx blockcommands [Player]")
@@ -51,32 +90,26 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 clear {esx::blockcommands::%{_arg2}%}
                                 send(player, "Unblocked all commands for player %{_arg2}%")
                                 send({_arg2} parsed as player, "You may now execute commands again")
-                                        
                 else if {_arg1} = "getip":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
                                 send(player, "IP adress of player %{_arg2}%: %{esx::ip::%{_arg2}%}%")
-                        
                 else if {_arg1} = "supersuicide":
                         {_arg2} is not set:
                                 supersuicide(player)
                         else:
                                 supersuicide({_arg2} parsed as player)
-                        
                 else if {_arg1} = "rename":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
                         else:
                                 set name of player's tool to "%{_arg2}% %{_arg3}%"        
-                
                 else if {_arg1} = "setmotd":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx setmotd [Text]")
                         else:
                                 set {esx::motd} to "%{_arg2}% %{_arg3}%"
                                 send(player, "Successfully set motd to: %{esx::motd}%")
-                                
                 else if {_arg1} = "ping":
-                        send(player, "Your ping is: %player's ping%")
-# ------------
+                                send(player, "Your ping is: %player's ping%")
