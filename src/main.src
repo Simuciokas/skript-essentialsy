@@ -9,10 +9,10 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 {_arg1} is not set:
                         send(player, "Type /esx help to view a list of commands") # If argument is not set tell player to use help command
                         stop
-                        
+
                 else if player doesn't have permission "esx.%{_arg1}%":
                         send(player, {@npm})
-                        
+
                 else if {_arg1} = "help":
                         send(player, "Command List:")
                         sendempty(player, "")
@@ -24,7 +24,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         send(player, "rename -- Rename any item!")
                         send(player, "setmotd -- Set the login message!")
                         send(player, "ping -- See your current ping")
-                
+
                 else if {_arg1} = "logincount":
                         {_arg2} is not set:
                                 send(player, "Logincount: %{esx::logincount}%")
@@ -51,32 +51,36 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                                 clear {esx::blockcommands::%{_arg2}%}
                                 send(player, "Unblocked all commands for player %{_arg2}%")
                                 send({_arg2} parsed as player, "You may now execute commands again")
-                                        
+
                 else if {_arg1} = "getip":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx getip [Player]")
                         else:
                                 send(player, "IP adress of player %{_arg2}%: %{esx::ip::%{_arg2}%}%")
-                        
+
                 else if {_arg1} = "supersuicide":
                         {_arg2} is not set:
                                 supersuicide(player)
                         else:
                                 supersuicide({_arg2} parsed as player)
-                        
+
                 else if {_arg1} = "rename":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
                         else:
-                                set name of player's tool to "%{_arg2}% %{_arg3}%"        
-                
+                                set name of player's tool to "%{_arg2}% %{_arg3}%"
+
                 else if {_arg1} = "setmotd":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx setmotd [Text]")
                         else:
-                                set {esx::motd} to "%{_arg2}% %{_arg3}%"
-                                send(player, "Successfully set motd to: %{esx::motd}%")
-                                
+                                {_arg3} is set:
+                                        set {esx::motd} to "%{_arg2}% %{_arg3}%"
+                                        send(player, "Successfully set motd to: %{esx::motd}%")
+                                else:
+                                        set {esx::motd} to "%{_arg2}%"
+                                        send(player, "Successfully set motd to: %{esx::motd}%")
+
                 else if {_arg1} = "ping":
                         send(player, "Your ping is: %player's ping%")
 # ------------
