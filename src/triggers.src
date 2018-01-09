@@ -4,6 +4,7 @@
 on login:
         set {esx::logincount} to {esx::logincount} + 1
         wait 3 ticks
+        set {esx::ip::%player%} to ip of player
         if {esx::motd} is set:
                 sendempty(player, {esx::motd})
 
@@ -12,6 +13,12 @@ on command:
         send(player, "You are currently blocked from executing any commands")
         cancel event
         
+on death of player:
+        set {esx::playerDied::%victim%} to true
+        wait 25 ticks
+        {esx::playerDied::%victim%} is set
+        clear {esx::playerDied::%victim%}
+
 on first join:
         execute console command "sudo %player% spawn"
 # ------------
