@@ -1,6 +1,6 @@
 echo "Build of EssentialsY started..."
 echo "Adding options"
-grep -o '^[^#]*' src/options.src | awk 'NF' >> essentialsy.sk
+grep -o '^[^#]*' src/options.src | awk 'NF' > essentialsy.sk
 echo "Adding functions..."
 grep -o '^[^#]*' src/functions.src | awk 'NF' >> essentialsy.sk
 echo "Adding triggers"
