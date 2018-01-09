@@ -2,7 +2,7 @@
 
 # ------------
 function send(player: player, text: text):
-        message "%{@sendprefix}% %{_text}%" to {_player}
+        message "{@sendprefix} %{_text}%" to {_player}
 
 function sendempty(player: player, text: text):
         message "<cyan>%{_text}%" to {_player}
