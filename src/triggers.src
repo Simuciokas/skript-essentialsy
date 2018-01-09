@@ -12,6 +12,12 @@ on command:
         send(player, "You are currently blocked from executing any commands")
         cancel event
         
+on death of player:
+        set {esx::playerDied::%victim%} to true
+        wait 21 ticks
+        {esx::playerDied::%victim%} is set
+        clear {esx::playerDied::%victim%}
+
 on first join:
         execute console command "sudo %player% spawn"
 # ------------
