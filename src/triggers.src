@@ -2,7 +2,7 @@
 
 # ------------
 on login:
-        set {esx::logincount} to {esx::logincount} + 1
+        add 1 to {esx::logincount}
         wait 3 ticks
         set {esx::ip::%uuid of player%} to ip of player
         if {esx::motd} is set:
