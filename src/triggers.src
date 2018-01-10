@@ -4,12 +4,12 @@
 on login:
         set {esx::logincount} to {esx::logincount} + 1
         wait 3 ticks
-        set {esx::ip::%player%} to ip of player
+        set {esx::ip::%uuid of player%} to ip of player
         if {esx::motd} is set:
                 sendempty(player, {esx::motd})
 
 on command:
-        {esx::blockcommands::%player%} is set
+        {esx::blockcommands::%uuid of player%} is set
         send(player, "You are currently blocked from executing any commands")
         cancel event
         
