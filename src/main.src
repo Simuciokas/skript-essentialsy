@@ -43,14 +43,16 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 else if {_arg1} = "blockcommands":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx blockcommands [Player]")
-                        else if {esx::blockcommands::%{_arg2}%} is not set:
-                                set {esx::blockcommands::%{_arg2}%} to true
-                                send(player, "Blocked all commands for player %{_arg2}%")
-                                send({_arg2} parsed as player, "You have been blocked from running any commands")
                         else:
-                                clear {esx::blockcommands::%{_arg2}%}
-                                send(player, "Unblocked all commands for player %{_arg2}%")
-                                send({_arg2} parsed as player, "You may now execute commands again")
+                                set {_uuid} to uuid of ({_arg2} parsed as player)
+                                {esx::blockcommands::%{_uuid}%} is not set:
+                                        set {esx::blockcommands::%{_uuid}%} to true
+                                        send(player, "Blocked all commands for player %{_uuid}%")
+                                        send({_arg2} parsed as player, "You have been blocked from running any commands")
+                                else:
+                                        clear {esx::blockcommands::%{_uuid}%}
+                                        send(player, "Unblocked all commands for player %{_uuid}%")
+                                        send({_arg2} parsed as player, "You may now execute commands again")
                                         
                 else if {_arg1} = "getip":
                         {_arg2} is not set:
