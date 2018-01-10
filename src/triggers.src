@@ -21,5 +21,5 @@ on death of player: # Another wonky code block to stop supersuicide when the pla
 
 on first join: # Make sure the player starts it spawn
         wait 5 ticks
-        execute console command "spawn"
+        execute player command "/spawn"
 # ------------
