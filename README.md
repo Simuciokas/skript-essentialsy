@@ -38,4 +38,4 @@ Before opening a pull request, please test your code to see if it works. Then ma
 
 Make sure to write a good commit message explaining what you just added or fixed so the other contributors does't have to look through the code just to get an idea of what you did.
 
-Feature development is done on the master branch but only stable code will be integrated.
+Only pull requests to develop will be merged as master is reserver for hotfixes and releases
