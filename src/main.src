@@ -68,13 +68,17 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
                         else:
-                                set name of player's tool to "%{_arg2}% %{_arg3}%"        
+                                {_arg3} is set:
+                                        set {_arg2} to "%{_arg2}% %{_arg3}%"
+                                set name of player's tool to {_arg2}        
                 
                 else if {_arg1} = "setmotd":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx setmotd [Text]")
                         else:
-                                set {esx::motd} to "%{_arg2}% %{_arg3}%"
+                                {_arg3} is set:
+                                        set {_arg2} to "%{_arg2}% %{_arg3}%"
+                                set {esx::motd} to {_arg2}
                                 send(player, "Successfully set motd to: %{esx::motd}%")
                                 
                 else if {_arg1} = "ping":
