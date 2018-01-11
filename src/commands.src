@@ -1,22 +1,22 @@
 # Standalone Commands
 
 # ------------
-command /spawn:
+command /spawn: # Teleport the player who executes it to spawn ; Support to teleport other players to spawn is planned
         permission: esx.spawn
         description: Teleports you to spawn
         executable by: players
         trigger:
                 teleport player to {esx::spawn}
-				
-command /setspawn:
+
+command /setspawn: # Set the spawn to your current location
         permission: esx.setspawn
         description: Sets spawn at your current location
         trigger:
                 set {esx::spawn} to location of player
                 send(player, "Spawn set successfully!")
-              
-command /unblockcommands [<arg1:text>]:
+
+command /unblockcommands [<arg1:text>]: # A console command to unblock commands for a player
         permission: esx.blockcommands
         trigger:
-                clear {esx::blockcommands::%{_arg1}%}
+                clear {esx::blockcommands::%{esx::uuid::%{_arg1}%}%}
 # ------------
