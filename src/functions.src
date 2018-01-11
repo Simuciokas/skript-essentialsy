@@ -11,8 +11,8 @@ function supersuicide(p: player): # Spawn 64 creepers at the player over 8 secon
         spawn 8 creepers at {_p}
         loop 7 times:
                 wait 1 second
-                {esx::playerDied::%uuid of {_p} parsed as player%} is set:
-                        clear {esx::playerDied::%uuid of {_p} parsed as player%}
+                {esx::playerDied::%{esx::uuid::%{_p}%}%} is set:
+                        clear {esx::playerDied::%{esx::uuid::%{_p}%}%}
                         stop loop
                 spawn 8 creepers at {_p}
 # ------------

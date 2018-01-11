@@ -3,7 +3,8 @@
 # ------------
 on login:
         add 1 to {esx::logincount}
-        set {esx::ip::%uuid of player%} to ip of player
+        set {esx::uuid::%player%} to player's uuid
+        set {esx::ip::%{esx::uuid::%player%}%} to ip of player
         if {esx::motd} is set:
                 wait 5 ticks # Delay to make the motd appear newest in the chat
                 sendempty(player, {esx::motd})
