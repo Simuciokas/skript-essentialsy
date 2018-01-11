@@ -14,10 +14,10 @@ on command: # Block the player from sending any commands whatsoever
         cancel event
 
 on death of player: # Another wonky code block to stop supersuicide when the player dies
-        set {esx::playerDied::%victim%} to true
+        set {esx::playerDied::%uuid of victim%} to true
         wait 25 ticks
-        {esx::playerDied::%victim%} is set
-        clear {esx::playerDied::%victim%}
+        {esx::playerDied::%uuid of victim%} is set
+        clear {esx::playerDied::%uuid of victim%}
 
 on first join: # Make sure the player starts it spawn
         wait 5 ticks
