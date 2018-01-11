@@ -41,3 +41,9 @@ Make sure to write good commit messages explaining what you just added or fixed 
 Only pull requests to develop will be merged as master is reserved for hotfixes and releases
 
 When you finish your work with a feature in the ToDo column, please move it to the Done column.
+
+Always put your name in front of the name of a feature branch so for example
+```
+2legal2_updatechecker
+```
+This is so one can easily see who's the lead dev of a feature and who to contact for collab on that feature.
