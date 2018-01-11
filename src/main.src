@@ -25,6 +25,7 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                         send(player, "rename -- Rename any item!")
                         send(player, "setmotd -- Set the login message!")
                         send(player, "ping -- See your current ping")
+                        send(player, "getuuid -- Get a players uuid")
 
                 else if {_arg1} = "logincount": # Show and manipulate the logincount
                         {_arg2} is not set:
@@ -82,4 +83,10 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
 
                 else if {_arg1} = "ping":
                         send(player, "Your ping is: %player's ping%") # Get the players ping
+
+                else if {_arg1} = "getuuid":
+                        {_arg2} is not set:
+                                send(player, "Usage: /esx getuuid [Player]")
+                        else:
+                                send(player, "UUID of %{_arg2}%: %{esx::uuid::%{_arg2}%}%")
 # ------------
