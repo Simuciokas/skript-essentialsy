@@ -2,7 +2,7 @@
 
 
 # ------------
-command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
+command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>] [<arg4:text>] [<arg5:text>] [<arg6:text>] [<arg7:text>] [<arg8:text>] [<arg9:text>] :
         permission: esx
         executable by: players
         trigger:
@@ -69,7 +69,19 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 else if {_arg1} = "rename":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx rename [Name]")
-                        else if {_arg3} is set: # Due to language limits this wonky things exists, it is to choose and parse the correct variables
+                        else if {_arg9} is set: # Due to language limits this wonky things exists, it is to choose and use the correct variables
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}% %{_arg8}% %{_arg9}%"
+                        else if {_arg8} is set:
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}% %{_arg8}%"
+                        else if {_arg7} is set:
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}%"
+                        else if {_arg6} is set:
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}%"
+                        else if {_arg5} is set:
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}%"
+                        else if {_arg4} is set:
+                                set name of player's tool to "%{_arg2}% %{_arg3}% %{_arg4}%"
+                        else if {_arg3} is set:
                                 set name of player's tool to "%{_arg2}% %{_arg3}%"
                         else:
                                 set name of player's tool to "%{_arg2}%"
@@ -77,9 +89,23 @@ command /esx [<arg1:text>] [<arg2:text>] [<arg3:text>]:
                 else if {_arg1} = "setmotd":
                         {_arg2} is not set:
                                 send(player, "Usage: /esx setmotd [Text]")
+                        else if {_arg9} is set: # Again this wonky codeblock, might be replace with a function
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}% %{_arg8}% %{_arg9}%"
+                        else if {_arg8} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}% %{_arg8}%"
+                        else if {_arg7} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}% %{_arg7}%"
+                        else if {_arg6} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}% %{_arg6}%"
+                        else if {_arg5} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}% %{_arg5}%"
+                        else if {_arg4} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}% %{_arg4}%"
+                        else if {_arg3} is set:
+                                set {esx::motd} to "%{_arg2}% %{_arg3}%"
                         else:
-                                set {esx::motd} to "%{_arg2}% %{_arg3}%" # Set the motd, again will have to copy paste the wonky codeblock-1 here
-                                send(player, "Successfully set motd to: %{esx::motd}%")
+                                set {esx::motd} to "%{_arg2}%"
+                        send(player, "Successfully set motd to: %{esx::motd}%")
 
                 else if {_arg1} = "ping":
                         send(player, "Your ping is: %player's ping%") # Get the players ping
