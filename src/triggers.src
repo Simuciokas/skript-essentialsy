@@ -3,9 +3,9 @@
 # ------------
 on login:
         add 1 to {esx::logincount}
-        set {esx::uuid::%player%} to player's uuid
-        set {esx::ip::%{esx::uuid::%player%}%} to ip of player
-        if {esx::motd} is set:
+        set {esx::ip::%uuid of player%::%ip of player%} is not set:
+                set {esx::ip::%uuid of player%::%ip of player%} to ip of player
+        {esx::motd} is set:
                 wait 5 ticks # Delay to make the motd appear newest in the chat
                 sendempty(player, {esx::motd})
 
@@ -15,12 +15,13 @@ on command: # Block the player from sending any commands whatsoever
         cancel event
 
 on death of player: # Another wonky code block to stop supersuicide when the player dies
-        set {esx::playerDied::%uuid of victim%} to true
+        set {esx::playerDied::%victim%} to true
         wait 25 ticks
-        {esx::playerDied::%uuid of victim%} is set
-        clear {esx::playerDied::%uuid of victim%}
+        {esx::playerDied::%victim%} is set
+        clear {esx::playerDied::%victim%}
 
 on first join: # Make sure the player starts it spawn
+        {esx::spawn} is set
         wait 5 ticks
         execute player command "/spawn"
 # ------------
