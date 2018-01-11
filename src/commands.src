@@ -18,5 +18,5 @@ command /setspawn: # Set the spawn to your current location
 command /unblockcommands [<arg1:text>]: # A console command to unblock commands for a player
         permission: esx.blockcommands
         trigger:
-                clear {esx::blockcommands::%{esx::uuid::%{_arg1}%}%}
+                clear {esx::blockcommands::%uuid of ({_arg1} parsed as offlineplayer)%}
 # ------------
