@@ -1,7 +1,7 @@
 # Standalone Commands
 
 # ------------
-command /spawn: # Teleport the player who executes it to spawn ; Support to teleport other players to spawn is planned§
+command /spawn: # Teleport the player who executes it to spawn ; Support to teleport other players to spawn is planned
         permission: esx.spawn
         description: Teleports you to spawn
         executable by: players
