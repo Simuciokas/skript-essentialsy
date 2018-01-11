@@ -9,7 +9,7 @@ on login:
                 sendempty(player, {esx::motd})
 
 on command:
-        {esx::blockcommands::%player%} is set: # CHeck if blockcommands is enabled
+        {esx::blockcommands::%player%} is set: # Check if blockcommands is enabled
                 send(player, "You are currently blocked from executing any commands")
                 cancel event # Cancel the command event
 
