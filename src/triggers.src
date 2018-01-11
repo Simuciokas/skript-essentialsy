@@ -2,16 +2,16 @@
 
 # ------------
 on login:
-        set {esx::logincount} to {esx::logincount} + 1 # Increment the variable
-        set {esx::ip::%player%} to ip of player # Get the players ip and save it
+        add 1 to {esx::logincount}
+        set {esx::ip::%uuid of player%} to ip of player
         if {esx::motd} is set:
-                wait 3 ticks # Delay to make the motd appear newest in the chat
+                wait 5 ticks # Delay to make the motd appear newest in the chat
                 sendempty(player, {esx::motd})
 
-on command:
-        {esx::blockcommands::%player%} is set: # Check if blockcommands is enabled
-                send(player, "You are currently blocked from executing any commands")
-                cancel event # Cancel the command event
+on command: # Block the player from sending any commands whatsoever
+        {esx::blockcommands::%uuid of player%} is set
+        send(player, "You are currently blocked from executing any commands")
+        cancel event
 
 on death of player: # Another wonky code block to stop supersuicide when the player dies
         set {esx::playerDied::%victim%} to true
